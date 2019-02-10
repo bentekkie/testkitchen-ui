@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<h1> {{ recipe.name }} <a mat-button color="primary" (click)="editRecipe()" style="font-size: 20px; float: right;"> Edit this recipe</a> <button mat-button color="primary" (click)="copyLink()" style="font-size: 20px; float: right;">Copy shareable link </button> </h1>
+<div class="todos">
+
+
+
+</div>
+<div class="flex-container" id="types">
+    <div class="step">
+        <h2>Steps</h2>
+        <div cdkDropList #todoList="cdkDropList" id="step" [cdkDropListData]="steps" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of recipe.steps;  let i=index" >{{i+1}}. {{item.description}}
+                <div class="flex-container">
+                    <div>
+
+                    </div>
+                    <form>
+                        <div id="commentIn" type="text" value="" keyup.enter="submitComment($event)"></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="ingredient">
+        <h2>Ingredients</h2>
+
+        <div cdkDropList id="ingredient" #doneList="cdkDropList" [cdkDropListData]="ingredients" class="example-list" (cdkDropListDropped)="drop($event)">
+            <span *ngFor="let item of recipe.items;  let i=index">
+                <div class="example-box"  *ngIf="isIngredient(item)" >{{item.name}} ({{item.quantity}})
+                    <div class="flex-container">
+                        <div>
+                        </div>
+                    <form><input id="commentIn" type="text" value="" keyup.enter="submitComment($event)"></form>
+                    </div>
+                </div>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="equipment">
+        <h2>Equipment</h2>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="equipments" class="example-list" (cdkDropListDropped)="drop($event)">
+            <span *ngFor="let item of recipe.items;  let i=index">
+                <div class="example-box" *ngIf="isEquipment(item)"  >{{item.name}}
+                    <div class="flex-container">
+                        <div>
+                        </div>
+                        <form><input id="commentIn" type="text" value="" keyup.enter="submitComment($event)"> </form>
+                    </div>
+                </div>
+            
+            </span>
+
+    </div>
+</div>
+<h2>Comments</h2>
+ <div>{{recipe.commitMsg}}</div>
+
+

@@ -1,0 +1,38 @@
+<h1> All Recipes</h1>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> <a  (click)="pageLink(element)"> {{element.name}}</a></td>
+  </ng-container>
+  
+    <ng-container matColumnDef="commitMsg">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
+    <td mat-cell *matCellDef="let element"> {{element.commitMsg}} </td>
+  </ng-container>
+  
+    <ng-container matColumnDef="author">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Chef </th>
+    <td mat-cell *matCellDef="let element"> {{element.authorId}} </td>
+  </ng-container>
+  
+    <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.created)}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="share">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Share </th>
+    <td mat-cell *matCellDef="let element">  <button (click)="copyLink(element)">Copy shareable link </button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+ <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
