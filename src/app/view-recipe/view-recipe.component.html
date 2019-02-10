@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-<h1> {{ recipe.name }} <a mat-button color="primary" (click)="editRecipe()" style="font-size: 20px; float: right;"> Edit this recipe</a> <button mat-button color="primary" (click)="copyLink()" style="font-size: 20px; float: right;">Copy shareable link </button> </h1>
+<h1> {{ recipe.name }} 
+<button mat-button color="primary" (click)="editRecipe()" style="font-size: 20px; float: right;">
+    <mat-icon>edit</mat-icon>
+</button> 
+<button mat-button color="primary" (click)="copyLink()" style="font-size: 20px; float: right;">
+    <i class="fa fa-share-alt" aria-hidden="true"></i>
+</button> 
+</h1>
 <div class="todos">
 
 

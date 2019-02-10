@@ -1,5 +1,13 @@
+
+
 * {
   box-sizing: border-box;
+  
+}
+
+
+html {
+  background-color: #f8f2ff !important;
 }
 
 
@@ -10,18 +18,20 @@
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
+  background-color: #f8f2ff;
+
 }
 
 .flex-container > img {
     margin-left: 10px;
     margin-right: 10px;
+    background-color: #f8f2ff;
 }
 
 body {
-  //font-family: Arial;
+  font-family: 'Roboto', sans-serif;
   padding: 10px;
-  background-color: #b0caf4;
-  //background: #f1f1f1;
+  background-color: #f8f2ff;
 }
 
 /* Header/Blog Title */
@@ -30,10 +40,11 @@ body {
   text-align: center;
   text-decoration: none !important;
   color: black !important;
+  background-color: #f8f2ff;
 }
 
 .header h1 {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 /* Style the top navigation bar */

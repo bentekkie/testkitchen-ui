@@ -26,7 +26,6 @@ export class ApiService {
       return resp
     })
   }
-  
   public async getRecipes(options ?: {
     mine?:boolean,
     authorId?:string
