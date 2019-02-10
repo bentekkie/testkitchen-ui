@@ -35,7 +35,8 @@
             <div class="example-box" *ngFor="let item of ingredients;  let i=index" cdkDrag>{{item.name}}
                     <div class="flex-container">
                         <div>
-                        <i (click)="deleteElement(ingredients,i)"  class="far fa-trash-alt"></i>
+                        <i (click)="deleteElement(ingredients,i)"  class="far fa-trash-alt" style="padding: 2px"></i>
+                        <mat-icon (click)="editIngredient(i)" style="padding: 2px">edit</mat-icon>
                         </div>
                         <form>
                             <div id="commentIn" type="text" value="" keyup.enter="submitComment($event)"></div>
@@ -56,8 +57,10 @@
         <div cdkDropList #todoList="cdkDropList" id="equipments" [cdkDropListData]="equipments" class="example-list" (cdkDropListDropped)="drop(equipments,$event)">
             <div class="example-box" *ngFor="let item of equipments;  let i=index" cdkDrag>{{item.name}}
                     <div class="flex-container">
+                        
                         <div>
-                        <i (click)="deleteElement(equipments,i)"  class="far fa-trash-alt"></i>
+                        <i (click)="deleteElement(equipments,i)"  class="far fa-trash-alt" style="padding: 2px"></i>
+                        <mat-icon (click)="editEquipment(i)" style="padding: 2px">edit</mat-icon>
                         </div>
                         <form>
                             <div id="commentIn" type="text" value="" keyup.enter="submitComment($event)"></div>
@@ -82,7 +85,7 @@
 </mat-form-field>
 <button mat-raised-button color="primary" (click)="saveRecipe()" >Save</button>
    
-   <div id="editStep" class="modal">
+<div id="editStep" class="modal">
   
   <form class="modal-content animate" #userlogin = "ngForm"  >
     <div class="imgcontainer">
@@ -91,13 +94,53 @@
 
     <div class="container">
         <mat-form-field class="example-full-width" style="width:100%">
-            <textarea [(ngModel)]="editSteptmp" name="wipRecipe.commitMsg" matInput placeholder="Leave a comment"></textarea>
+            <textarea [(ngModel)]="editSteptmp" name="editSteptmp" matInput placeholder="Step description"></textarea>
         </mat-form-field>
       <button mat-raised-button color="primary" (click)="saveStep()" >Save Edit</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('editStep').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div id="editIngredient" class="modal">
+  
+  <form class="modal-content animate" #userlogin = "ngForm"  >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('editIngredient').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+        <mat-form-field class="example-full-width" style="width:100%">
+            <textarea [(ngModel)]="editIngredienttmp" name="editIngredienttmp" matInput placeholder="Ingredient description"></textarea>
+        </mat-form-field>
+      <button mat-raised-button color="primary" (click)="saveIngredient()" >Save Edit</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('editIngredient').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div id="editEquipment" class="modal">
+  
+  <form class="modal-content animate" #userlogin = "ngForm"  >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('editEquipment').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+        <mat-form-field class="example-full-width" style="width:100%">
+            <textarea [(ngModel)]="editEquipmenttmp" name="editEquipmenttmp" matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+      <button mat-raised-button color="primary" (click)="saveEquipment()" >Save Edit</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('editEquipment').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
@@ -111,6 +154,22 @@ var modal = document.getElementById('editStep');
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+var modal1 = document.getElementById('editIngredient');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+}
+var modal2 = document.getElementById('editEquipment');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal2) {
+        modal2.style.display = "none";
     }
 }
 </script>

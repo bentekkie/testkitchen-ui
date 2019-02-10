@@ -28,6 +28,10 @@ export class EditRecipeComponent implements OnInit {
     equipments:RecipeItem[] = []
     editSteptmp: string
     editStepI: number
+    editIngredienttmp: string
+    editIngredientI: number
+    editEquipmenttmp: string
+    editEquipmentI: number
     tmpStep:string
     tmpEquipment:string
     tmpIngredient:string
@@ -41,6 +45,28 @@ export class EditRecipeComponent implements OnInit {
     saveStep(){
       this.wipRecipe.steps[this.editStepI].description = this.editSteptmp
       document.getElementById('editStep').style.display='none';
+    }
+    
+    editIngredient(index:number){
+      document.getElementById('editIngredient').style.display='block';
+      this.editIngredienttmp = this.ingredients[index].name
+      this.editIngredientI = index
+    }
+    
+    saveIngredient(){
+      this.ingredients[this.editIngredientI].name = this.editIngredienttmp
+      document.getElementById('editIngredient').style.display='none';
+    }
+    
+    editEquipment(index:number){
+      document.getElementById('editEquipment').style.display='block';
+      this.editEquipmenttmp = this.equipments[index].name
+      this.editEquipmentI = index
+    }
+    
+    saveEquipment(){
+      this.equipments[this.editEquipmentI].name = this.editEquipmenttmp
+      document.getElementById('editEquipment').style.display='none';
     }
     
     addIngredient(name : string){
